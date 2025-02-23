@@ -42,7 +42,7 @@ public class UserController {
     // ResponseEntity. ok -- ok means StatusCode in the Postman Response part
     // Http.StatusCode.ok -- ok means we are gonna see the body  also HTTP status
     @GetMapping("/{username}")
-    public ResponseEntity<ResponseWrapper> getUserByUserName(@PathVariable ("username")String userName){
+    public ResponseEntity<ResponseWrapper> getUserByUserName(@PathVariable ("username")String userName){// How am I gonna catch this username ? with @PathVariable
 
         UserDTO foundUserDTO = userService.findByUserName(userName);
 
@@ -54,7 +54,7 @@ public class UserController {
     }
 
     @PostMapping()
-    public ResponseEntity<ResponseWrapper> createUser(@RequestBody UserDTO userDTO){ // How am I gonna catch this username ? with @PathVariable
+    public ResponseEntity<ResponseWrapper> createUser(@RequestBody UserDTO userDTO){ // How am I gonna catch at one from the API ? with @RequestBody
             userService.save(userDTO);
     return ResponseEntity.status(HttpStatus.CREATED)
                           .body(
